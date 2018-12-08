@@ -11,9 +11,11 @@ export enum NamePostFix {
 export abstract class Resource<T> {
 
     protected readonly options: T;
+    protected readonly stage: string;
     private readonly namePrefix: string | undefined;
 
-    public constructor(options: T, namePrefix?: string) {
+    public constructor(stage: string, options: T, namePrefix?: string) {
+        this.stage = stage;
         this.options = options;
         this.namePrefix = namePrefix;
     }
@@ -22,9 +24,9 @@ export abstract class Resource<T> {
 
     public getName(namePostFix: NamePostFix): string {
         if (this.namePrefix) {
-            return this.namePrefix + namePostFix.toString();
+            return this.namePrefix + namePostFix.toString() + this.stage;
         }
-        return namePostFix;
+        return namePostFix + this.stage;
     }
 
 }

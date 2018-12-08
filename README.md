@@ -16,6 +16,7 @@ Generates a serverless aurora db instance either with a new vpc + subnets or an 
 {
     username: string; // must be alphanumeric
     password: string; // must be at least 8 characters in length
+    identifier?: string; // defaults to AuroraClusterID{stage}
     backupRetentionPeriod?: number; // defaults to 7
     backupWindow?: string; // defaults to 1am - 2am utc
     maintenanceWindow?: string; // defaults to monday 3am - 4am utc
@@ -52,6 +53,7 @@ custom:
   aurora:
     username: myawesomeusername
     password: myawesomepassword
+    identifier: MyAwesomeIdentifier
     backupRetentionPeriod: 10 # keep backups for 10 days
     backupWindow: 03:00-04:00 # utc
     maintenanceWindow: mon:05:00-mon:06:00 # utc

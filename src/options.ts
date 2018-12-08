@@ -14,6 +14,7 @@ export type IVPCOptions = IVPCExistingOptions | IVPCCreateOptions;
 export interface IPluginOptions {
     username: string;
     password: string;
+    identifier?: string; // defaults to AuroraClusterID{stage}
     backupRetentionPeriod?: number; // defaults to 7
     backupWindow?: string; // defaults to 1am - 2am utc
     maintenanceWindow?: string; // defaults to monday 3am - 4am utc

@@ -15,9 +15,11 @@ class ServerlessAuroraPlugin {
     }
 
     private compile(): void {
-        const options: IPluginOptions = this.serverless.service.custom.aurora;
-        const vpc: VPC = new VPC(options.vpc, "SAP");
-        const cluster: Cluster = new Cluster(options, "SAP", vpc);
+        const service: any = this.serverless.service;
+        const options: IPluginOptions = service.custom.aurora;
+        const stage: string = service.provider ? service.provider.stage : service.stage;
+        const vpc: VPC = new VPC(stage, options.vpc, "SAP");
+        const cluster: Cluster = new Cluster(stage, options, "SAP", vpc);
 
         // merge all our stuff into resources
         Object.assign(

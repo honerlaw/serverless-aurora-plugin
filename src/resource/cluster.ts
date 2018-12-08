@@ -6,8 +6,8 @@ export class Cluster extends Resource<IPluginOptions> {
 
     private readonly vpc: VPC;
 
-    public constructor(options: IPluginOptions, namePrefix: string, vpc: VPC) {
-        super(options, namePrefix);
+    public constructor(stage: string, options: IPluginOptions, namePrefix: string, vpc: VPC) {
+        super(stage, options, namePrefix);
         this.vpc = vpc;
     }
 
@@ -18,6 +18,7 @@ export class Cluster extends Resource<IPluginOptions> {
                 "Properties": {
                     "Engine": "aurora",
                     "EngineMode": "serverless",
+                    "DBClusterIdentifier": this.options.identifier || "AuroraClusterID" + this.stage,
                     "MasterUsername": this.options.username,
                     "MasterUserPassword": this.options.password,
                     "BackupRetentionPeriod": this.options.backupRetentionPeriod || 7,

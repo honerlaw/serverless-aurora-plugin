@@ -9,8 +9,8 @@ export class VPC extends Resource<IVPCOptions> {
 
     private readonly subnetNames: string[];
 
-    public constructor(options: IVPCOptions, namePrefix: string) {
-        super(options, namePrefix);
+    public constructor(stage: string, options: IVPCOptions, namePrefix: string) {
+        super(stage, options, namePrefix);
 
         if (VPC.isCreateOptions(options)) {
             this.subnetNames = options.subnetCidrs
@@ -28,7 +28,7 @@ export class VPC extends Resource<IVPCOptions> {
         if (postfix === NamePostFix.VPC) {
             const options: IVPCOptions = this.options;
             if (!VPC.isCreateOptions(options)) {
-                return options.name;
+                return options.name + this.stage;
             }
         }
         return super.getName(postfix);
