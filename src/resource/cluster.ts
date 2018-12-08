@@ -23,6 +23,12 @@ export class Cluster extends Resource<IPluginOptions> {
                     "BackupRetentionPeriod": this.options.backupRetentionPeriod || 7,
                     "PreferredBackupWindow": this.options.backupWindow || "01:00-02:00",
                     "PreferredMaintenanceWindow": this.options.maintenanceWindow || "mon:03:00-mon:04:00",
+                    "ScalingConfiguration": {
+                        "AutoPause": this.options.autoPause !== undefined ? this.options.autoPause : true,
+                        "MinCapacity": this.options.minCapacity || 0,
+                        "MaxCapacity": this.options.maxCapacity || 2,
+                        "SecondsUntilAutoPause": this.options.autoPauseSeconds || 300
+                    },
                     "DBSubnetGroupName": {
                         "Ref": this.vpc.getName(NamePostFix.SUBNET_GROUP)
                     },

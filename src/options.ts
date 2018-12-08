@@ -17,5 +17,9 @@ export interface IPluginOptions {
     backupRetentionPeriod?: number; // defaults to 7
     backupWindow?: string; // defaults to 1am - 2am utc
     maintenanceWindow?: string; // defaults to monday 3am - 4am utc
+    minCapacity?: number; // default 0
+    maxCapacity?: number; // default 2
+    autoPause?: boolean; // default true
+    autoPauseSeconds?: number; // default 5 min
     vpc: IVPCOptions;
 }
