@@ -4,6 +4,7 @@
   "description": "A simple serverless framework plugin to create an aurora serverless database",
   "main": "index.js",
   "scripts": {
+    "prepublish": "npm run build",
     "clean": "rm -rf ./*.js ./*.js.map ./bin/ ./.serverless/ ./resource/",
     "build": "npm run clean && tsc -p ./tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
