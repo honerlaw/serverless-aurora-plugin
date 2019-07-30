@@ -16,7 +16,7 @@ export class Cluster extends Resource<IPluginOptions> {
             [this.getName(NamePostFix.DATABASE_CLUSTER)]: {
                 "Type": "AWS::RDS::DBCluster",
                 "Properties": {
-                    "Engine": "aurora",
+                    "Engine": this.options.engine || "aurora",
                     "EngineMode": "serverless",
                     "DBClusterIdentifier": this.options.identifier || "AuroraClusterID" + this.stage,
                     "MasterUsername": this.options.username,
