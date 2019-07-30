@@ -12,6 +12,7 @@ export interface IVPCExistingOptions {
 export type IVPCOptions = IVPCExistingOptions | IVPCCreateOptions;
 
 export interface IPluginOptions {
+    engine: string;
     username: string;
     password: string;
     identifier?: string; // defaults to AuroraClusterID{stage}
