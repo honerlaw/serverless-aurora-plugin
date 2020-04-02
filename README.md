@@ -47,7 +47,7 @@ provider:
   stage: example
 
 plugins:
-- serverless-fargate-plugin
+- serverless-aurora-plugin
 
 custom:
   aurora:
@@ -61,7 +61,7 @@ custom:
     maxCapacity: 16
     autoPause: true
     autoPauseSeconds: 60 # 1 minute
-    vpc
+    vpc:
       cidr: 10.0.0.0/16
       subnetCidrs:
       - 10.0.1.0/24
